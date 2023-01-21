@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title');
-            $table->string('comment');
-            $table->string('image_id');
+            $table->string('title', 50);
+            $table->string('comment', 200);
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId->string('image_id', 200)->constrained('images');
         });
     }
 
