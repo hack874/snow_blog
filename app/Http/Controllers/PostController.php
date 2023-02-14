@@ -19,13 +19,8 @@ class PostController extends Controller
         return view('posts/image', compact('posts'));
     }
     
-    public function create(Request $request)
+    public function create()
     {
-        //POST
-        if($request->isMethod('POST')){
-            dd($request->all());
-        }
-        return view('post.create');
+        return view('posts/create');
     }
-    
 }
