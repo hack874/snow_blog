@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +14,26 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/', [PostController::class, 'index'])->name('index');
+    Route::post('/post/{comment_id}/comments', 'CommentsController@store');
+    Route::get('/comments/{comment_id}', 'CommentsController@destroy');
+    Route::post('/recruitments/{recruitment}', [PostController::class, 'index']);
+});
 
-Route::get('/posts', [PostController::class, 'index']);  
+Route::get('/post', 'PostController@index');
+Route::get('/create', 'PostController@create');
+
+    
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

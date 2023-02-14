@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->string('path',200);
+            $table->foreignId('post_id')->constrained('posts');
+            $table->foreignId('image_id')->constrained('images');//画像を見ればどの投稿かを認識出来ように画像にデータを持たせる
             $table->timestamps();
         });
     }
