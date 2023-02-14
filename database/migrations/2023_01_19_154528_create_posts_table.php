@@ -18,8 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title', 50);
             $table->string('comment', 200);
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId->string('image_id', 200)->constrained('images');
+            $table->foreignId('user_id')->constrained('users'); 
         });
     }
 

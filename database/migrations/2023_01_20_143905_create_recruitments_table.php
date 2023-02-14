@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('recruitments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('comment',200);
+            $table->string('place',20);
+            $table->string('age');
+            $table->string('style');
+            $table->date('date');
+            $table->string('number');
             $table->timestamps();
         });
     }

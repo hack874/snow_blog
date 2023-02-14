@@ -14,11 +14,18 @@ use App\Http\Controllers\PostController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [PostController::class, 'index']);
-Route::post('/post/{comment_id}/comments', 'CommentsController@store');
-Route::get('/comments/{comment_id}', 'CommentsController@destroy');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/', [PostController::class, 'index'])->name('index');
+    Route::post('/post/{comment_id}/comments', 'CommentsController@store');
+    Route::get('/comments/{comment_id}', 'CommentsController@destroy');
+    Route::post('/recruitments/{recruitment}', [PostController::class, 'index']);
+});
 
+Route::get('/post', 'PostController@index');
+Route::get('/create', 'PostController@create');
 
+    
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

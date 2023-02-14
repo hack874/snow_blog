@@ -15,40 +15,6 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        
-         <div class="form-group row">
-    <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
-
-    <div class="col-md-6" style="padding-top: 8px">
-        <input id="gender-m" type="radio" name="gender" value="male">
-        <label for="gender-m">Male</label>
-        <input id="gender-f" type="radio" name="gender" value="female">
-        <label for="gender-f">Female</label>
-
-        @if ($errors->has('gender'))
-            <span class="invalid-feedback">
-                <strong>{{ $errors->first('gender') }}</strong>
-            </span>
-        @endif
-    </div>
-</div>
-
-<div class="form-group row">
-    <label for="age" class="col-md-4 col-form-label text-md-right">Age</label>
-
-    <div class="col-md-6">
-        <input id="age" type="number" min="1" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{ old('age') }}" required>
-
-        @if ($errors->has('age'))
-            <span class="invalid-feedback">
-                <strong>{{ $errors->first('age') }}</strong>
-            </span>
-        @endif
-    </div>
-</div>
-
-
-
 
         <!-- Password -->
         <div class="mt-4">
@@ -61,10 +27,6 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-        
-       
-
-
 
         <!-- Confirm Password -->
         <div class="mt-4">
