@@ -23,4 +23,11 @@ class PostController extends Controller
     {
         return view('posts/create');
     }
+    public function store(Request $request, Post $post)
+    {
+        $input = $request['post'];
+        $input += ['user_id' => $requset->user()->id]; 
+        $post->fill($input)->save();
+        return redirect('/posts/' .$post->id);
+    }
 }
