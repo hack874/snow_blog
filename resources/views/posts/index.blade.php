@@ -32,6 +32,17 @@
   </div>
 </nav>
    
+       <div class='posts'>
+            @foreach ($posts as $post)
+                <div class='post'>
+                   <p><a href='/posts/profiles/{{$post->user->id}}'>{{$post->user->name}}<a/></p>
+                    <h2 class='title'>{{ $post->title }}</h2>
+                    <p class='body'>{{ $post->comment }}</p>
+                   
+                </div>
+            @endforeach
+        </div>
+
 
       
     </body>
