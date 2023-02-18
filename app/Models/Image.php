@@ -14,7 +14,7 @@ class Image extends Model
         'path'
         ];
     
-    public function posts(){
+    public function post(){
         
      return $this->belongsTo(Post::class);
     }

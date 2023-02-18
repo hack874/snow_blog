@@ -12,6 +12,7 @@ class Post extends Model
     protected $fillable =[
         'title',
         'comment',
+        'user_id',
         'image_id',
         'user_id',
         ];
@@ -21,8 +22,8 @@ class Post extends Model
     {
         return $this::with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
-
-        public function users()
+    
+    public function user()   
     {
         return $this->belongsTo(User::class);
     }
