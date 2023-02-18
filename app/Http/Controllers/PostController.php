@@ -42,7 +42,7 @@ class PostController extends Controller
     {
         $input = $request['post'];//formから送られてきたものがrequestに入り,その中でname属性でpostというのがinputに入る
         $post->user_id = Auth::id();
-        $post->fill($input)->save(); //fill使うと複数のプロパティに同時にデータを挿入できる
+        $post->fill($input)->save(); //fill使うと複数(title, comment)のプロパティに同時にデータを挿入できる
         
         $images = $request->file('images_array');
         if(isset($images))//配列の中身があったらtrue 、isset.
