@@ -15,7 +15,6 @@ use App\Http\Controllers\UserProfileController;
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/posts/profiles/{user}', [UserProfileController::class, 'index']);
-    
     Route::get('/', [PostController::class, 'index'])->name('index');
     Route::post('/post/{comment_id}/comments', 'CommentsController@store');
     Route::get('/comments/{comment_id}', 'CommentsController@destroy');
