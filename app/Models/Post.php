@@ -14,16 +14,16 @@ class Post extends Model
         'comment',
         'user_id',
         'image_id',
+        'user_id',
         ];
     
     
     function getPaginateByLimit(int $limit_count = 5)
     {
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
-
     
-    public function user()
+    public function user()   
     {
         return $this->belongsTo(User::class);
     }

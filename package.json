@@ -6,6 +6,7 @@
         "watch": "vite build --watch"
     },
     "devDependencies": {
+
         "@tailwindcss/forms": "^0.5.2",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
@@ -18,5 +19,6 @@
     },
     "dependencies": {
         "vue-infinite-loading": "^2.4.5"
+
     }
 }
