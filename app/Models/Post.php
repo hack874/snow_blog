@@ -30,11 +30,11 @@ class Post extends Model
     
     public function images()
     {
-        return $this->hasManyTo(Image::class);
+        return $this->hasMany(Image::class);
     }
     
      public function comments()
     {
-        return $this->hasManyTo(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 }

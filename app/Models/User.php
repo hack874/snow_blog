@@ -23,6 +23,8 @@ class User extends Authenticatable
         'age',
         'email',
         'password',
+        'favorite_place',
+        'introduction',
         'profile_image',
     ];
 
@@ -47,6 +49,16 @@ class User extends Authenticatable
     public function posts()   
    {
     return $this->hasMany(Post::class);  
+   }
+   
+   public function sport_kinds()
+   {
+       return $this->belongsToMany(SportKind::class);
+   }
+   
+   public function snowboard_styles()
+   {
+       return $this->belongsToMany(SnowboardStyle::class);
    }
    
     public function comments()   

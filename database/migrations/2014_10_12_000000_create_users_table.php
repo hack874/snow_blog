@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->integer('age')->nullable();
             $table->string('gender')->nullable();
-            $table->string('carrer')->nullable();
-            $table->string('style')->nullable();
+            $table->string('favorite_place')->nullable();
+            $table->string('introduction')->nullable();
             $table->string('profile_image')->nullable();
             $table->rememberToken();
             $table->timestamps();
