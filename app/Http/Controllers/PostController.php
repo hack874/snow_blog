@@ -32,6 +32,7 @@ class PostController extends Controller
     {
         return view('posts/create');
     }
+    
     public function show(Post $post)
     {
         return view('posts/show')->with(['post' => $post]);
@@ -49,7 +50,7 @@ class PostController extends Controller
         {               
             foreach($images as $image) //送られてきた画像分
             {   
-                $new_image = new Image; //インスタン作成
+                $new_image = new Image; //インスタン作成 imagetableに画像を入れるためにインスタンスを作る cloudinaryから帰ってきたurlを保存する場所がprofとは異なる
                 $upload_url = Cloudinary::upload($image->getRealPath())->getSecurePath(); //$upload_urlにcloudinaryのpathが入ってる
                 $new_image->path = $upload_url; //new_imageのpathに$uplord_urlを代入
                 $new_image->post_id = $post->id;
