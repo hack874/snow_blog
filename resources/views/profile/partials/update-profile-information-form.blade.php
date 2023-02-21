@@ -17,9 +17,14 @@
         @csrf
         @method('patch')
         
-        <div class="mb-6">
-            <label class="block mb-2 text-sm font-medium text-gray-900 text-orange-600" for="file_input">プロフィール画像</label>
-            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 " id="file_input" name="image"  type="file">
+        <div>
+            <x-picture-input />
+          　<x-input-error class="mt-2" :messages="$errors->get('picture')" />
+      　</div>
+        
+        <!--<div class="mb-6">-->
+            <!--<label class="block mb-2 text-sm font-medium text-gray-900 text-orange-600" for="file_input">プロフィール画像</label>-->
+            <!--<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 " id="file_input" name="image"  type="file">-->
 
             <div>
                 <x-input-label for="name" :value="__('Name')" />
@@ -31,11 +36,17 @@
             <label for="gender" class="col-md-4 col-form-label text-md-right">性別</label>
         
             <div class="col-md-6" style="padding-top: 8px">
-                <input id="gender-m" type="radio" name="gender" value="男性">
-                <label for="gender-m">男性</label>
-                <input id="gender-f" type="radio" name="gender" value="女性">
-                <label for="gender-f">女性</label>
-        
+                @if($user->gender=='男性')
+                    <input checked id="gender-m" type="radio" name="gender" value="男性">
+                    <label for="gender-m">男性</label>
+                    <input id="gender-f" type="radio" name="gender" value="女性">
+                    <label for="gender-f">女性</label>
+                @else 
+                    <input cheked id="gender-m" type="radio" name="gender" value="男性"> {{--「checked」ない場合、女性を選択したときにcheckが外れる--}}
+                    <label for="gender-m">男性</label>
+                    <input id="gender-f" type="radio" name="gender" value="女性">
+                    <label for="gender-f">女性</label>
+                @endif    
                 @if ($errors->has('gender'))
                     <span class="invalid-feedback">
                         <strong>{{ $errors->first('gender') }}</strong>
@@ -48,7 +59,7 @@
     <label for="age" class="col-md-4 col-form-label text-md-right">Age</label>
 
     <div class="col-md-6">
-        <input id="age" type="number" min="1" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{ old('age') }}" required>
+        <input id="age" type="number" min="1" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value={{$user->age}} required>
 
         @if ($errors->has('age'))
             <span class="invalid-feedback">
@@ -59,17 +70,25 @@
 </div>
 
 
-       
+      
 <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">種類</h3>
 <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
      @foreach($sport_kinds as $sport_kind)
-       
+       @if(in_array($sport_kind->id, $selected_sport_kinds)) {{--右辺が左辺と一致していた場合--}}
+        <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+            <div class="flex items-center pl-3">
+                <input checked id="type" type="checkbox" name = "sport_kinds[]" value="{{$sport_kind->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label>
+            </div>
+        </li>
+        @else
         <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
             <div class="flex items-center pl-3">
                 <input id="type" type="checkbox" name = "sport_kinds[]" value="{{$sport_kind->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                 <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label>
             </div>
         </li>
+        @endif
      @endforeach
  </ul>
      
@@ -89,12 +108,12 @@
  
  <div class="mb-6">
     <label for="inrtoduction" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">自己紹介</label>
-    <textarea id="introduction" name = "introduction" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="自己紹介しましょう"></textarea>
+    <textarea id="introduction" name = "introduction" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="自己紹介しましょう">{{$user->introduction}}</textarea>
   </div>
   
   <div class="mb-6">
     <label for="place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">お気に入りゲレンデ</label>
-    <input type="text" id="place" name ="favorite_place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="自己紹介しましょう">
+    <input type="text" id="place" name ="favorite_place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value = {{$user->favorite_place}} placeholder="お気に入りのゲレンデを書きましょう">
   </div>
 
 <form>

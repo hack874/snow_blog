@@ -20,10 +20,15 @@ class ProfileController extends Controller
      */
     public function edit(Request $request, SportKind $sport_kind, SnowboardStyle $snowboard_style): View
     {
+        $selected_sport_kinds=[];
+        foreach($request->user()->sport_kinds as $sport_kind){
+            array_push($selected_sport_kinds, $sport_kind->id); //配列にスポーツの種類のiDを入れてる
+        }
         return view('profile.edit', [
             'user' => $request->user(),
             'sport_kinds'=> $sport_kind->get(),
             'snowboard_styles'=>$snowboard_style->get(), //モデルのインスタンスがデータを取得してviewに返す
+            'selected_sport_kinds'=>$selected_sport_kinds 
         ]);
     }
 
@@ -31,26 +36,27 @@ class ProfileController extends Controller
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $input_image = $request->image;
-        
-        if(isset($input_image))
-        {
-            $upload_url = Cloudinary::upload($input_image->getRealPath())->getSecurePath(); //getrealpathがnullなものに使われている
-            $request->user()->profile_image = $upload_url;
-        }  //issetはnullか否かを判断している.条件分はここではisset.2%2とかと同じ
+    {   
+        $input_image = $request->picture;
+    
+       
        
         
         $input_sportkinds = $request->sport_kinds;
         
-        $request->user()->fill($request->validated());
+        $request->user()->fill($request->safe()->only(['name', 'email', 'gender', 'password', 'favorite_place', 'introduction', 'profile_image']));
+         if(isset($input_image))
+        {
+            $upload_url = Cloudinary::upload($input_image->getRealPath())->getSecurePath(); //getrealpathがnullなものに使われている
+            $request->user()->profile_image = $upload_url;
+        }  //issetはnullか否かを判断している.条件分はここではisset.2%2とかと同じ
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
         
         $request->user()->save();
-        $request->user()->sport_kinds()->attach($input_sportkinds);
+        $request->user()->sport_kinds()->sync($input_sportkinds);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

@@ -22,7 +22,7 @@ class ProfileUpdateRequest extends FormRequest
             'gender' => ['string'],
             'favorite_place' => ['string'],
             'introduction' => ['string'],
-            'profile_image' => ['string']
+            'profile_image' => ['string', 'mimes:gif,png,jpg,web', 'max:3072'],
         ];
     }
 }
