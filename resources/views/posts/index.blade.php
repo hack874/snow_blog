@@ -47,6 +47,7 @@
                     <img id="image_{{$post->id}}" class="w-5 h-5" src="{{asset('/images/love.png')}}" onclick="like({{$post->id}})">
                    {{--画像が押されたときにjsのlike関数の引数に投稿のデータがわたって実行される--}}
                   @endif
+                  <p><a href='posts/{{$post->id}}/comments'>コメント</a></p>
             @endforeach
       </div>
           
