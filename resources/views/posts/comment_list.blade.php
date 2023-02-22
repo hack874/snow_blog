@@ -1,8 +1,10 @@
-@foreach ($article->comments as $comment)
+
+@foreach($post->comments()->get() as $comment) {{--入力されたcommentsを受け取っている--}}
+
   <div class="mb-2">
         <span>
             <strong>
-                <a class="no-text-decoration black-color" href="{{ route('users.show', ['name' => $comment->user->name]) }}">{{ $comment->user->name }}</a>
+                <a class="no-text-decoration black-color" href="">{{ $comment->user->name }}</a>
             </strong>
         </span>
         <span>{{ $comment->comment }}</span>
@@ -15,3 +17,5 @@
         @endif
   </div>
 @endforeach
+ 
+  
