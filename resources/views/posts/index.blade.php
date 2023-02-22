@@ -38,16 +38,21 @@
                    <p><a href='/posts/profiles/{{$post->user->id}}'>{{$post->user->name}}<a/></p>
                    <h2 class='title'>{{ $post->title }}</h2>
                   @foreach ($post->images as $image)
-                  <img src="{{$image->path}}" width="25%"> 
+                    <img src="{{$image->path}}" width="25%"> 
                   @endforeach
-                  <p class='body'>{{ $post->comment }}</p>
+                    <p class='body'>{{ $post->comment }}</p>
+                  @if(auth()->user()->isLike($post->id)){{--関数を実行しているので実際に値を入れる$post->idの形になる--}}
+                    <img id="image_{{$post->id}}" class="w-5 h-5" src="{{asset('/images/heart.png')}}" onclick="like({{$post->id}})">
+                  @else
+                    <img id="image_{{$post->id}}" class="w-5 h-5" src="{{asset('/images/love.png')}}" onclick="like({{$post->id}})">
+                   {{--画像が押されたときにjsのlike関数の引数に投稿のデータがわたって実行される--}}
+                  @endif
             @endforeach
       </div>
           
          
        
 
-
-      
+    <script src="{{ asset('/js/like.js') }}"></script>
     </body>
 </x-app-layout>
