@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,8 @@ use App\Http\Controllers\UserProfileController;
 Route::middleware('auth')->group(function () {
     Route::get('/posts/profiles/{user}', [UserProfileController::class, 'index']);
     Route::get('/', [PostController::class, 'index'])->name('index');
-    Route::post('/post/{comment_id}/comments', 'CommentsController@store');
-    Route::get('/comments/{comment_id}', 'CommentsController@destroy');
+    Route::post('/posts/comments/{comment_id}/', [CommentsController::class, 'store']);
+    Route::get('/comments/{comment_id}', [CommentController::class, 'destroy']);
     Route::get('/posts/', [PostController::class, 'index']);
     Route::get('/posts/create', [PostController::class, 'create']);
     Route::get('/tweet', [PostController::class, 'tweet']);
@@ -24,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/{post}', [PostController::class, 'show']);
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::put('/posts/{post}', [PostController::class, 'update']);
+    Route::post('/like/{postId}', [LikeController::class, 'store']);
+    
     
 });
 

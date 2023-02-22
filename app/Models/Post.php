@@ -14,6 +14,7 @@ class Post extends Model
         'comment',
         'user_id',
         'image_id',
+        'like',
         ];
     
     
@@ -31,6 +32,11 @@ class Post extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+    
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
     
      public function comments()

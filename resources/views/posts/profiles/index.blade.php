@@ -8,15 +8,18 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        <div class ="profile">
-            <img class="rounded" src="{{$user->profile_image}}">
-            <p class="text-base font-semibold leading-none text-gray-900 dark:text-white">
+      <div>
+            <x-picture-input />
+          　<x-input-error class="mt-2" :messages="$errors->get('picture')" />
+      　</div>
             <a href="#">{{$user->name}}</a>
+        <h3>お気に入りゲレンデ</h3>
+        <p class='favorite_place'>
+            {{$user->favorite_place}}
         </p>
-            
-            
-        </div>
-     
-       
-</div>
+        
+        <h3>自己紹介</h3>
+        <p class='introduction'>
+            {{$user->introduction}}
+        </p>
     </body>

@@ -24,11 +24,16 @@ class ProfileController extends Controller
         foreach($request->user()->sport_kinds as $sport_kind){
             array_push($selected_sport_kinds, $sport_kind->id); //配列にスポーツの種類のiDを入れてる
         }
+        $selected_snowboard_styles=[];
+        foreach($request->user()->snowboard_styles as $snowboard_style){
+            array_push($selected_snowboard_styles, $snowboard_style->id);
+        }
         return view('profile.edit', [
             'user' => $request->user(),
             'sport_kinds'=> $sport_kind->get(),
             'snowboard_styles'=>$snowboard_style->get(), //モデルのインスタンスがデータを取得してviewに返す
-            'selected_sport_kinds'=>$selected_sport_kinds 
+            'selected_sport_kinds'=>$selected_sport_kinds,
+            'selected_snowboard_styles'=>$selected_snowboard_styles
         ]);
     }
 

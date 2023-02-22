@@ -26,6 +26,7 @@ class User extends Authenticatable
         'favorite_place',
         'introduction',
         'profile_image',
+        'like',
     ];
 
     /**
@@ -65,4 +66,29 @@ class User extends Authenticatable
    {
     return $this->hasMany(Comment::class);  
    }
-}
+     //多対多のリレーション
+   public function likes()
+    {
+        return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id')->withTimestamps();
+    }
+     //この投稿に対して既にlikeしたかどうかを判別する関数
+    public function isLike($postId)
+    {
+        return $this->likes()->where('post_id', $postId)->exists(); //likes()いいねした投稿のidが入る.いいねした投稿のid($postId)とすでにいいねした投稿のid(post_id)一致したらTrue.なかったらFalseを返す
+    }
+    //isLikeを使って、既にlikeしたか確認したあと、いいねする（重複させないための関数）
+    public function like($postId)
+    {
+        if($this->isLike($postId)){ //いいねされていた場合、いいね削除される
+            $this->likes()->detach($postId);
+             return 'unliked';
+        }
+        else{ //いいねされていなかった場合、like()に投稿idが入る
+            $this->likes()->attach($postId); 
+            return 'liked';
+          
+        }
+    }
+    
+}   
+
