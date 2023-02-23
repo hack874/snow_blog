@@ -27,6 +27,19 @@ class UserSeeder extends Seeder
             'profile_image'=>'https://res.cloudinary.com/dyoyavmyk/image/upload/v1676882241/rhxqspkkwy1ogcl2rjfb.jpg',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
+        ]);
+        
+         DB::table('users')->insert([
+            'name'=>'関シド',
+            'email'=>'test@test2',
+            'password'=>bcrypt('Bo2fuga21'),
+            'age'=>20,
+            'gender'=>'男性',
+            'favorite_place'=>'舞子スキー場',
+            'introduction'=>'よろしくお願いします',
+            'profile_image'=>'https://res.cloudinary.com/dyoyavmyk/image/upload/v1676882241/rhxqspkkwy1ogcl2rjfb.jpg',
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
             
         
         

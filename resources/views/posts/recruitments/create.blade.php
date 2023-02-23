@@ -17,9 +17,8 @@
         </div>
         
         <div style="background-color: #E8F4FA; text-align: center;">
-                <input type="text" name="post[title]" style="margin: 1rem; padding: 0 1rem; width: 70%; border-radius: 6px; border: 1px solid #ccc; height: 2.3rem;" placeholder="今どうしてる？">
-                <input type="text" name="post[comment]" style="margin: 1rem; padding: 0 1rem; width: 70%; border-radius: 6px; border: 1px solid #ccc; height: 2.3rem;" placeholder="今どうしてる？">
-                <button type="submit" style="background-color: #2695E0; color: white; border-radius: 10px; padding: 0.5rem;">{{$errors->first("post.comment")}}ツイート</button>
+                <input type="text" name="recruitment[comment]" style="margin: 1rem; padding: 0 1rem; width: 70%; border-radius: 6px; border: 1px solid #ccc; height: 2.3rem;" placeholder="今どうしてる？">
+                <button type="submit" style="background-color: #2695E0; color: white; border-radius: 10px; padding: 0.5rem;">{{$errors->first("recruitment.comment")}}ツイート</button>
         </div>
        
         

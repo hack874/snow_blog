@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Recruitment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class PostController extends Controller
+class RecruitmentController extends Controller
 {
-    public function index(Post $post)//インポートしたPostをインスタンス化して$postとして使用。
+    public function index(Recruitment $recruitment)//インポートしたrecruitmentをインスタンス化して$recruitmentして使用。
     {
-        return view('recruitments/show')->with(['recruitments' => $recruiment->getPaginateByLimit()]);  
+        return view('posts/recruitments/index')->with(['recruitments' => $recruiment->getPaginateByLimit()]);  
     }
     
+    public function create()
+    {
+        return view('posts/recruitments/create');
+    }
     
 }

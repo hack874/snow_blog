@@ -10,14 +10,10 @@ class Recruitment extends Model
     use HasFactory;
     
     protected $fillable =[
-        'title',
         'comment',
         'user_id',
         'place',
-        'age',
-        'style',
         'data',
-        'number',
         ];
     
     public function getPaginateByLimit(int $limit_count = 5)

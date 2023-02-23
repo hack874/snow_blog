@@ -48,6 +48,7 @@ class ProfileController extends Controller
        
         
         $input_sportkinds = $request->sport_kinds;
+        $input_snowboardstyles = $request->snowboard_styles;
         
         $request->user()->fill($request->safe()->only(['name', 'email', 'gender', 'password', 'favorite_place', 'introduction', 'profile_image']));
          if(isset($input_image))
@@ -62,6 +63,7 @@ class ProfileController extends Controller
         
         $request->user()->save();
         $request->user()->sport_kinds()->sync($input_sportkinds);
+        $request->user()->snowboard_styles()->sync($input_snowboardstyles);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

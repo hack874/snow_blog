@@ -62,6 +62,11 @@ class User extends Authenticatable
        return $this->belongsToMany(SnowboardStyle::class);
    }
    
+   public function recruitments()
+   {
+       return $this->hasMany(Recruitment::class);
+   }
+     
     public function comments()   
    {
     return $this->hasMany(Comment::class);  

@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\RecruitmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::put('/posts/{post}', [PostController::class, 'update']);
     Route::post('/like/{postId}', [LikeController::class, 'store']);
+    Route::get('/recruitments', [RecruitmentController::class, 'index']);
+    Route::get('/recruitments/create', [RecruitmentController::class, 'create']);
     
     
 });
