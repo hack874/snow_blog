@@ -1,10 +1,22 @@
-<app-layout>
+<x-app-layout>
     <x-slot name="header">
-        <h1>スノボーSNS</h1>
+ 
         
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    </head>
     </x-slot>
     <body>
-<div class='recruitments'>
+        <div class="comment">
+            <h1>コメント</h1>
+          <p>{{$recruitment->comment}}</p>
+         </div>
+         <div class="place">
+             <h1>予定ゲレンデ</h1>
+             <p>{{$recruitment->place}}</p>
+         </div>
+         
+        <div class='recruitments'>
              @foreach ($recruitments as $recruitment)
             <div class='recruitment'>
                     <p><a href='/posts/profiles/{{$post->user->id}}'>{{$post->user->name}}<a/></p>
@@ -18,9 +30,15 @@
                       
                 </div>
                 <h2 class="comment mx-auto">{{$recruitment->comment}}</h2>
-                <h2 class="place mx-auto">{{$recruitment->place}}</h2>
-            @endforeach
             </div>
-            
-        </body> 
+          
+          
+     
+       
+        
+           
+        </form>
+        
+         
+    </body>
     </x-app-layout>

@@ -13,7 +13,7 @@ class Recruitment extends Model
         'comment',
         'user_id',
         'place',
-        'data',
+        'date',
         ];
     
     public function getPaginateByLimit(int $limit_count = 5)

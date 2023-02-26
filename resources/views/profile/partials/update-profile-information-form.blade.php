@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Profile Information') }}
+            {{ __('プロフィール画面') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __("Update your account's profile information and email address.") }}
+            
         </p>
     </header>
 
@@ -27,7 +27,7 @@
             <!--<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 " id="file_input" name="image"  type="file">-->
 
             <div>
-                <x-input-label for="name" :value="__('Name')" />
+                <x-input-label for="name" :value="__('ユーザー名')" />
                 <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
             </div>
@@ -56,7 +56,7 @@
         </div>
 
 <div class="form-group row">
-    <label for="age" class="col-md-4 col-form-label text-md-right">Age</label>
+    <label for="age" class="col-md-4 col-form-label text-md-right">年齢</label>
 
     <div class="col-md-6">
         <input id="age" type="number" min="1" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value={{$user->age}} required>
@@ -116,12 +116,12 @@
  
  <div class="mb-6">
     <label for="place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">お気に入りゲレンデ</label>
-    <input type="text" id="place" name ="favorite_place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value = {{$user->favorite_place}} placeholder="お気に入りのゲレンデを書きましょう">
+    <input type="text" id="place" name ="favorite_place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value = {{old('user.favorite_place', $user->favorite_place)}} placeholder="お気に入りのゲレンデを書きましょう">
   </div>
  
  <div class="mb-6">
     <label for="inrtoduction" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">自己紹介</label>
-    <textarea id="introduction" name = "introduction" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="自己紹介しましょう">{{$user->introduction}}</textarea>
+    <textarea id="introduction" name = "introduction" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="自己紹介しましょう">{{old('user.introduction', $user->introduction)}}</textarea>{{--第1はバリデーションかかってもintroを保持するためにある第2引数ではeditなどに必要--}}
   </div>
   
   

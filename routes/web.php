@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/like/{postId}', [LikeController::class, 'store']);
     Route::get('/recruitments', [RecruitmentController::class, 'index']);
     Route::get('/recruitments/create', [RecruitmentController::class, 'create']);
+    Route::get('/recruitments/{recruitment}', [RecruitmentController::class, 'show']);
+    Route::get('/recruitments/{recruitment}/edit', [RecruitmentController::class, 'edit']);
+    Route::put('/recruitments/{recruitment}', [RecruitmentController::class, 'update']);
+    Route::post('/recruitments/store', [RecruitmentController::class, 'store']);
     
     
 });

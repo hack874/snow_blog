@@ -22,10 +22,10 @@
           <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Search</a>
         </li>
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">Post</a>
+          <a href="/posts/create" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">投稿する</a>
         </li>
         <li>
-          <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Recruitment</a>
+          <a href="/recruitments/create" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">募集する</a>
         </li>
       </ul>
     </div>
@@ -34,9 +34,10 @@
    
        <div class='posts'>
             @foreach ($posts as $post)
-                <div class='post'>
+                <div class='post mx-auto'>
                    <p><a href='/posts/profiles/{{$post->user->id}}'>{{$post->user->name}}<a/></p>
                   <div class="mr-3">
+                    
                     <img
                       id="preview"
                       {{--isset画像が設定されているかどうか--}}
@@ -44,7 +45,6 @@
                       alt=""
                       class=" inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
                   </div>
-                   <h2 class='title'>{{ $post->title }}</h2>
                   @foreach ($post->images as $image)
                     <img src="{{$image->path}}" width="25%"> 
                   @endforeach
