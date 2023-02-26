@@ -23,6 +23,7 @@
         <p class='favorite_place'>
             {{$user->favorite_place}}
         </p>
+        <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label>
         
         <h3>自己紹介</h3>
         <p class='introduction'>

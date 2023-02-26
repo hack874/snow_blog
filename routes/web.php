@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/{post}/comments/', [CommentsController::class, 'index']);
     Route::get('/comments/{comment}', [CommentsController::class, 'destroy']);
     Route::get('/posts/', [PostController::class, 'index']);
-    Route::get('/posts/create', [PostController::class, 'create']);
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::get('/tweet', [PostController::class, 'tweet']);
     Route::post('/posts', [PostController::class, 'store']);
     Route::get('/posts/{post}', [PostController::class, 'show']);
@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/posts/{post}', [PostController::class, 'update']);
     Route::post('/like/{postId}', [LikeController::class, 'store']);
     Route::get('/recruitments', [RecruitmentController::class, 'index']);
-    Route::get('/recruitments/create', [RecruitmentController::class, 'create']);
+    Route::get('/recruitments/create', [RecruitmentController::class, 'create'])->name('recruitments.create');
     Route::get('/recruitments/{recruitment}', [RecruitmentController::class, 'show']);
     Route::get('/recruitments/{recruitment}/edit', [RecruitmentController::class, 'edit']);
     Route::put('/recruitments/{recruitment}', [RecruitmentController::class, 'update']);
