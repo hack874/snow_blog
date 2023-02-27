@@ -10,14 +10,10 @@ class Recruitment extends Model
     use HasFactory;
     
     protected $fillable =[
-        'title',
         'comment',
         'user_id',
         'place',
-        'age',
-        'style',
-        'data',
-        'number',
+        'date',
         ];
     
     public function getPaginateByLimit(int $limit_count = 5)
@@ -26,7 +22,7 @@ class Recruitment extends Model
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
-    public function users()
+    public function user() //投稿から見たらユーザーは一人に決まるからuser
     {
         return $this->belongsTo(User::class);
     }

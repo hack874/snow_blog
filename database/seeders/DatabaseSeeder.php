@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                 SportKindSeeder::class,
                 SnowboardStyleSeeder::class,
+                RecruitmentSeeder::class,
                 
         ]);
     }

@@ -52,16 +52,21 @@ class User extends Authenticatable
     return $this->hasMany(Post::class);  
    }
    
-   public function sport_kinds()
+   public function sportKinds()
    {
        return $this->belongsToMany(SportKind::class);
    }
    
-   public function snowboard_styles()
+   public function snowboardStyles()
    {
        return $this->belongsToMany(SnowboardStyle::class);
    }
    
+   public function recruitments()
+   {
+       return $this->hasMany(Recruitment::class);
+   }
+     
     public function comments()   
    {
     return $this->hasMany(Comment::class);  

@@ -4,7 +4,7 @@
   <div class="mb-2">
         <span>
             <strong>
-                <a class="no-text-decoration black-color" href="">{{ $comment->user->name }}</a>
+                <a class="no-text-decoration black-color" href="">{{ $comment->user->name }}</a>　
             </strong>
         </span>
         <span>{{ $comment->comment }}</span>
