@@ -22,7 +22,7 @@ class Recruitment extends Model
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
-    public function users()
+    public function user() //投稿から見たらユーザーは一人に決まるからuser
     {
         return $this->belongsTo(User::class);
     }

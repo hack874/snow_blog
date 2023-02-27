@@ -16,7 +16,7 @@ use App\Http\Controllers\RecruitmentController;
 | Here is where you can register web routes f-
 */
 Route::middleware('auth')->group(function () {
-    Route::get('/posts/profiles/{user}', [UserProfileController::class, 'index']);
+    Route::get('/profiles/{user}', [ProfileController::class, 'show']);
     Route::get('/', [PostController::class, 'index'])->name('index');
     Route::post('/posts/{comment_id}/comments/', [CommentsController::class, 'store']);
     Route::get('/posts/{post}/comments/', [CommentsController::class, 'index']);
@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/recruitments/{recruitment}/edit', [RecruitmentController::class, 'edit']);
     Route::put('/recruitments/{recruitment}', [RecruitmentController::class, 'update']);
     Route::post('/recruitments/store', [RecruitmentController::class, 'store']);
+  
     
     
 });

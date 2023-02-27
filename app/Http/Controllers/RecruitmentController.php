@@ -11,7 +11,7 @@ class RecruitmentController extends Controller
 {
     public function index(Recruitment $recruitment)//インポートしたrecruitmentをインスタンス化して$recruitmentして使用。
     {
-        return view('posts/recruitments/index')->with(['recruitments' => $recruiment->getPaginateByLimit()]);  
+        return view('posts/recruitments/index')->with(['recruitments' => $recruitment->getPaginateByLimit()]);  
     }
     
     public function create(Recruitment $recruitment)

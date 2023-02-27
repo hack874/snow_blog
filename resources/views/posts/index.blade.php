@@ -15,7 +15,7 @@
                   </div>
                   
                   <div class="profile mt-1 ml-2">
-                   <p class="mt-4"><a href='/posts/profiles/{{$post->user->id}}'>{{$post->user->name}}<a/></p>
+                   <p class="mt-4"><a href='/profiles/{{$post->user->id}}'>{{$post->user->name}}<a/></p>
                   </div>
                 </div>
                   @foreach ($post->images as $image)

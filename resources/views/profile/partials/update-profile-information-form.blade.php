@@ -42,9 +42,9 @@
                     <input id="gender-f" type="radio" name="gender" value="女性">
                     <label for="gender-f">女性</label>
                 @else 
-                    <input cheked id="gender-m" type="radio" name="gender" value="男性"> {{--「checked」ない場合、女性を選択したときにcheckが外れる--}}
+                    <input id="gender-m" type="radio" name="gender" value="男性"> {{--「checked」ない場合、女性を選択したときにcheckが外れる--}}
                     <label for="gender-m">男性</label>
-                    <input id="gender-f" type="radio" name="gender" value="女性">
+                    <input checked id="gender-f" type="radio" name="gender" value="女性">
                     <label for="gender-f">女性</label>
                 @endif    
                 @if ($errors->has('gender'))

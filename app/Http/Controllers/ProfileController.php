@@ -16,20 +16,32 @@ use Cloudinary;
 class ProfileController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Display the user's profile form.D
      */
-    public function edit(Request $request, SportKind $sport_kind, SnowboardStyle $snowboard_style): View
+     
+    public function show(User $user) //インスタンス名とルートパラメータを一致させる必要がある
+    {
+        return view ('profile/show')->with(['user' => $user]);
+        
+    }
+     
+    public function edit(SportKind $sport_kind, SnowboardStyle $snowboard_style): View
     {
         $selected_sport_kinds=[];
-        foreach($request->user()->sport_kinds as $sport_kind){
-            array_push($selected_sport_kinds, $sport_kind->id); //配列にスポーツの種類のiDを入れてる
+        if(isset(Auth::user()->sportKinds)){
+            foreach(Auth::user()->sportKinds as $sport_kind){
+                array_push($selected_sport_kinds, $sport_kind->id); //配列にスポーツの種類のiDを入れてる
+            }
         }
+        
         $selected_snowboard_styles=[];
-        foreach($request->user()->snowboard_styles as $snowboard_style){
-            array_push($selected_snowboard_styles, $snowboard_style->id);
+        if(isset(Auth::user()->snowboardStyles)){
+            foreach(Auth::user()->snowboardStyles as $snowboard_style){
+                array_push($selected_snowboard_styles, $snowboard_style->id);
+            }
         }
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => Auth::user(),
             'sport_kinds'=> $sport_kind->get(),
             'snowboard_styles'=>$snowboard_style->get(), //モデルのインスタンスがデータを取得してviewに返す
             'selected_sport_kinds'=>$selected_sport_kinds,
@@ -42,6 +54,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {   
+        
         $input_image = $request->picture;
     
        
@@ -60,10 +73,11 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-        
+     
+    
         $request->user()->save();
-        $request->user()->sport_kinds()->sync($input_sportkinds);
-        $request->user()->snowboard_styles()->sync($input_snowboardstyles);
+        Auth::user()->sportKinds()->sync($input_sportkinds);
+        Auth::user()->snowboardStyles()->sync($input_snowboardstyles);
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
