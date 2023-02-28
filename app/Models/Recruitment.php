@@ -26,5 +26,10 @@ class Recruitment extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function getPlaceNameAttribute()
+    {
+        return config('place.'.$this->place_id);
+    }
 }
 

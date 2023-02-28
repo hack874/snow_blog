@@ -25,7 +25,9 @@
                     <x-nav-link :href="route('recruitments.create')" :active="request()->routeIs('recruitments.create')">
                         {{ __('募集画面') }}
                     </x-nav-link>
-                </div>
+                    <x-nav-link :href="route('recruitments.index')" :active="request()->routeIs('recruitments.index')">
+                        {{ __('募集一覧') }}
+                    </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->
