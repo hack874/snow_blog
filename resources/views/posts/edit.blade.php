@@ -12,11 +12,7 @@
         <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
             @method('PUT')
-            <div class='content__title'>
-                <h2>タイトル</h2>
-                <input type='text' name='post[title]' value="{{ $post->title }}">
-            </div>
-            <div class='content__body'>
+            <div class='content__body max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                 <h2>本文</h2>
                 <input type='text' name='post[comment]' value="{{ $post->comment }}">
             </div>
