@@ -39,10 +39,17 @@ class RecruitmentController extends Controller
         return redirect('/recruitments/' . $recruitment->id);//redirectは保存した後に表示される頁
     }
     
-    public function search(Request $request)
-    {
-        return view('posts/recruitments/index')->with(['recruitments' => Recruitment::where("place_id", $request->place_id)->get()]);
-        Recruitment::where("place_id", $request->place_id)->get(); //requestできたplace_idと同じplace_idをDbから取得
+    public function search(Request $request, Place $place, Recruitment $recruitment)
+    {   
+        
+        $search_place = $request->place_id;
+      
+        
+        return view('posts/recruitments/index')->with([
+            'search_recruitments' => Recruitment::where("place_id", $search_place)->get(),//requestできたplace_idと同じplace_idをDbから取得
+            'places' => $place->get(),
+            'recruitments' => $recruitment->getPaginateByLimit()
+            ]); 
     }
     
     

@@ -4,7 +4,7 @@
             <img
                 id="preview"
                 {{--isset画像が設定されているかどうか--}}
-                src="{{ isset($post->user->profile_image) ? $post->user->profile_image : ""}}"{{--条件,?,trueの時の実行内容:falseの時の実行内容　--}}
+                src="{{ isset($user->profile_image) ? $user->profile_image : ""}}"{{--条件,?,trueの時の実行内容:falseの時の実行内容　--}}
                 alt=""
                 class=" inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
         </div>
