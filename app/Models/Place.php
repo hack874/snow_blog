@@ -9,7 +9,7 @@ class Place extends Model
 {
     protected $fillable =[
         'name',
-        'place_id',
+        'id',
         ];
         
         
