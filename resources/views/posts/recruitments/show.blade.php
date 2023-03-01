@@ -7,7 +7,7 @@
             </div>
             <div class="place">
                 <h1>予定ゲレンデ</h1>
-                <p>{{$recruitment->place}}</p>
+                <p>{{$recruitment->place_id}}</p>
             </div>
          
            

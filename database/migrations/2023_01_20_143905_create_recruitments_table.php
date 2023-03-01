@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('comment')->nullable();
-            $table->string('place')->nullable();
+            $table->foreignId('place_id')->constrained('places');//外部キーである大本のplaceファイルを先に消してしまうとどれを参照してるのかわからなくなる.migra古い順に作られる.壊すのは新しい順
             $table->date('date')->nullable();
             $table->timestamps();
         });

@@ -11,4 +11,16 @@ class Place extends Model
         'name',
         'place_id',
         ];
+        
+        
+    public function recruitments()
+    {
+        return $this->hasMany(Recruitment::class);
+    }
+    
+    
+    
+    
+    
+    
 }

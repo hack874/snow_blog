@@ -19,7 +19,10 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                 SportKindSeeder::class,
                 SnowboardStyleSeeder::class,
+                PlaceSeeder::class,
                 RecruitmentSeeder::class,
+                PostSeeder::class,
+                
                 
         ]);
     }

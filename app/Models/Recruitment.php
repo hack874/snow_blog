@@ -12,7 +12,7 @@ class Recruitment extends Model
     protected $fillable =[
         'comment',
         'user_id',
-        'place',
+        'place_id',
         'date',
         ];
     
@@ -27,9 +27,9 @@ class Recruitment extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function getPlaceNameAttribute()
+    public function place()
     {
-        return config('place.'.$this->place_id);
+        return $this->belongsTo(Place::class);
     }
 }
 

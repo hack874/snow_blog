@@ -20,7 +20,7 @@ class RecruitmentSeeder extends Seeder
         DB::table('recruitments')->insert([
             'user_id' => 1,
             'comment' => '主にグラトリをメインに滑っております。4人募集してます。車は私が出します。',
-            'place' => '栂池高原スキー場',
+            'place_id' => 1,
             'date' => date('2023-03-03'),
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),

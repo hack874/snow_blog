@@ -23,13 +23,13 @@
         </form>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="flex items-center mt-3">
+                <div class="w-1/4"></div>
+                <div class="w-1/4">ゲレンデ</div>
+                <div class="w-1/4">日にち</div>
+                <div class="w-1/4">コメント</div>
             </div> 
-        @foreach ($recruitments as $recruitment)
+        @foreach ($recruitments as $recruitment) 
             <div class="recruitment mt-5 border-b-4 border-slate-200 flex items-center">
                 <div class="mr-3 w-1/4 flex items-center">
                     <img
@@ -41,7 +41,7 @@
                       <p><a href='/profiles/{{$recruitment->user->id}}'>{{$recruitment->user->name}}</a></p>
                 </div>
                 <div class="w-1/4">
-                    <p>{{ $recruitment->place }}</p>
+                    <p>{{ $recruitment->place->name }}</p> {{----}}
                 </div>
                 <div class="w-1/4">
                     <p>{{$recruitment->date}}</p>
