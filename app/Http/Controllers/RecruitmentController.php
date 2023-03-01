@@ -43,12 +43,13 @@ class RecruitmentController extends Controller
     {   
         
         $search_place = $request->place_id;
-      
+        $search_date = $request->date;
+        
         
         return view('posts/recruitments/index')->with([
-            'search_recruitments' => Recruitment::where("place_id", $search_place)->get(),//requestできたplace_idと同じplace_idをDbから取得
+            'search_recruitments' => Recruitment::where("place_id", $search_place)->whereDate('date', $search_date)->get(),//requestできたplace_idと同じplace_idをDbから取得
             'places' => $place->get(),
-            'recruitments' => $recruitment->getPaginateByLimit()
+            'recruitments' => $recruitment->getPaginateByLimit(5)
             ]); 
     }
     
