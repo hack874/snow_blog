@@ -20,17 +20,19 @@ class RecruitmentController extends Controller
         return view('posts/recruitments/create')->with(['places' => $place->get()]);
     }
     
-    public function show(Recruitment $recruitment)
+    public function show(Recruitment $recruitment, Place $place)
     {
-        return view('posts/recruitments/show')->with(['recruitment' => $recruitment]);
+        return view('posts/recruitments/show')->with(['recruitment' => $recruitment, 'place' => $place]);
     }
     
     public function store(Request $request, Recruitment $recruitment)
     {   
-        
-        $input = $request['recruitment'];
+       
+        $input = $request['recruitment']; //$input,$requestは入力された値.$recruitmentは保存された後の値
         $recruitment->user_id = Auth::id();
-        $recruitment->fill($input)->save();
+        $recruitment->fill($input)->save(); 
+       
+        
         
 
         
@@ -39,7 +41,7 @@ class RecruitmentController extends Controller
     
     public function search(Request $request)
     {
-        return view('posts/recruitments/index')->with(['recruitments' => Recruitment::where("place_id", $request->place_id)->get() ]);
+        return view('posts/recruitments/index')->with(['recruitments' => Recruitment::where("place_id", $request->place_id)->get()]);
         Recruitment::where("place_id", $request->place_id)->get(); //requestできたplace_idと同じplace_idをDbから取得
     }
     
