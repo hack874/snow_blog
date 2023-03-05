@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\SportKind;
 use App\Models\SnowboardStyle;
 use Cloudinary;
+use JD\Cloudder\Facades\Cloudder;
 
 class ProfileController extends Controller
 {
