@@ -17,10 +17,6 @@ class PostController extends Controller
     {
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);  
     }
-    public function tweet()
-    {
-        logger('5');
-    }
     
     public function image()
     {
@@ -71,5 +67,15 @@ class PostController extends Controller
     $post->fill($input_post)->save();//fill関数は何も編集してない場合、updated_atが変化しないようにする
 
     return redirect('/posts/' . $post->id); //controllerからweb.phpに戻る
+    }
+    
+    public function delete(Post $post)
+    {
+        if(Auth::user()->id !== $post->user_id){
+            return back()->with('error', 'この投稿を削除する権限はありません');
+        }
+        
+        $post->delete();
+        return redirect('/');
     }
 }
