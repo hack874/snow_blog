@@ -23,5 +23,13 @@ class PostSeeder extends Seeder
         'created_at' => new DateTime(),
         'updated_at' => new DateTime(),
     ]);
+    
+    DB::table('posts')->insert([    
+        'comment' => 'ノーリーロックが初めてできました',
+        'place' => '神立スキー場',
+        'user_id' => 2,
+        'created_at' => new DateTime(),
+        'updated_at' => new DateTime(),
+    ]);
 }
 }

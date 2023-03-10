@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/{post}', [PostController::class, 'show']);
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::put('/posts/{post}', [PostController::class, 'update']);
+    Route::delete('/posts/{post}', [PostController::class, 'delete']);
     Route::post('/like/{postId}', [LikeController::class, 'store']);
     Route::get('/recruitments', [RecruitmentController::class, 'index'])->name('recruitments.index');
     Route::get('/recruitments/create', [RecruitmentController::class, 'create'])->name('recruitments.create');

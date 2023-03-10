@@ -13,10 +13,10 @@
                       alt=""
                       class=" inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
                   </div>
-                  
                   <div class="profile mt-1 ml-2">
                    <p class="mt-4"><a href='/profiles/{{$post->user->id}}'>{{$post->user->name}}<a/></p>
                   </div>
+                  
                 </div>
                   @foreach ($post->images as $image)
                   <div class="image flex justify-center">
@@ -38,10 +38,30 @@
                     <img src="/images/comment.png" class="w-5 h-5">
                       <p class="text-xs"><a href='posts/{{$post->id}}/comments'>コメント</p>
                   </div>
+                  <div class="flex flex-col items-center">
+                  @if(auth()->user()->id==$post->user->id)
+                  <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="buttom" onclick="deletePost({{$post->id}})">
+                    <img src="{{ asset('/images/remove.png') }}" class="w-5 h-5" alt="My Image">
+                    </button>
+                  </form>
+                  @endif
+                  </div>
                 </div>
               </div>
             @endforeach
       </div>
           
     <script src="{{ asset('/js/like.js') }}"></script>
+    <script>
+      function deletePost(id){
+        'use strict'
+        
+        if(confirm("本当に削除しますか")){
+          document.getElementById(`form_${id}`).submit();
+        }
+      }
+    </script>
 </x-app-layout>
