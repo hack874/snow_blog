@@ -95,6 +95,18 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        {{ __('ホーム画面') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
+                    {{ __('投稿画面') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('recruitments.create')" :active="request()->routeIs('recruitments.create')">
+                    {{ __('募集画面') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('recruitments.index')" :active="request()->routeIs('recruitments.index')">
+                    {{ __('募集一覧') }}
+                </x-responsive-nav-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
@@ -108,5 +120,6 @@
                 </form>
             </div>
         </div>
+        
     </div>
 </nav>
