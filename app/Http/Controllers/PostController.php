@@ -71,10 +71,6 @@ class PostController extends Controller
     
     public function delete(Post $post)
     {
-        if(Auth::user()->id !== $post->user_id){
-            return back()->with('error', 'この投稿を削除する権限はありません');
-        }
-        
         $post->delete();
         return redirect('/');
     }
