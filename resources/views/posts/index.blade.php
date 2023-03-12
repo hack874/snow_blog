@@ -33,7 +33,7 @@
                    {{--画像が押されたときにjsのlike関数の引数に投稿のデータがわたって実行される--}}
                   @endif
                       <p class="text-xs">いいね</p>
-                      <p>{{ $post->likes->count() }}いいね数</p>
+                      <span id="count_{{ $post->id }}">{{ $post->likes->count() }}</span>
                       
                   </div>
                   <div class="flex flex-col items-center ml-2">
