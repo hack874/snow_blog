@@ -14,15 +14,11 @@ use JD\Cloudder\Facades\Cloudder;
 class PostController extends Controller
 {
     public function index(Post $post)//インポートしたPostをインスタンス化して$postとして使用。
-    {
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);  
-    }
-    
-    public function image()
-    {
-        $post = Post::all();
-        return view('posts/image', compact('posts'));
-    }
+    {   
+        //dd($posts);
+        $posts = Post::with('user', 'likes')->get();
+        return view('posts/index', compact('posts'));
+    }   
     
     public function create()
     {
