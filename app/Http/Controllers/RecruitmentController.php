@@ -52,6 +52,11 @@ class RecruitmentController extends Controller
             'recruitments' => $recruitment->getPaginateByLimit(5)
             ]); 
     }
+    public function delete(Recruitment $recruitment)
+    {
+        $recruitment->delete();
+        return redirect('/recruitments');
+    }
     
     
 }
