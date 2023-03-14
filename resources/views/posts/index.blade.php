@@ -45,8 +45,8 @@
                   <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button type="buttom" onclick="deletePost({{$post->id}})">
-                    <img src="{{ asset('/images/remove.png') }}" class="w-5 h-5" alt="My Image">
+                    <button type="button" onclick="deletePost({{$post->id}})">
+                    <img src="{{ asset('/images/remove.png') }}" class="w-5 h-5" alt="trash Image">
                     </button>
                   </form>
                   @endif

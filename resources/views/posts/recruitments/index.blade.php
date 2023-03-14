@@ -46,6 +46,8 @@
             <div class="w-1/4">  
                 <p>{{ $search_recruitment->comment }}</p>
             </div>
+           
+            </div>
         </div>
         
         @endforeach
@@ -70,7 +72,7 @@
                       <p><a href='/profiles/{{$recruitment->user->id}}'>{{$recruitment->user->name}}</a></p>
                 </div>
                 <div class="w-1/4">
-                    <p>{{ $recruitment->place->name }}</p> {{----}}
+                    <p>{{ $recruitment->place->name }}</p>
                 </div>
                 <div class="w-1/4">
                     <p>{{$recruitment->date}}</p>
@@ -78,10 +80,25 @@
                 <div class="w-1/4">  
                     <p>{{ $recruitment->comment }}</p>
                 </div>
+            @if(auth()->user()->id==$recruitment->user->id)
+                <form action="/recruitments/{{$recruitment->id}}" id="form_{{$recruitment->id}}" method="post">
+                    @csrf
+                    @method("DELETE")
+                    <button type="button" onclick="deleterecruitment({{$recruitment->id}})">
+                    <img src="{{ asset('/images/option.png') }}" class="w-5 h-5" alt="option Image">
+                    </button>
+                </form>
+            @endif 
             </div>
         @endforeach
         </div>
-  
-            
-    
+        <script>
+            function deleterecruitment(id){
+              'use strict'
+        
+            if(confirm("本当に削除しますか")){
+             document.getElementById(`form_${id}`).submit();
+            }
+        }
+        </script>
     </x-app-layout>

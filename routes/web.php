@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/recruitments/{recruitment}/edit', [RecruitmentController::class, 'edit']);
     Route::put('/recruitments/{recruitment}', [RecruitmentController::class, 'update']);
     Route::post('/recruitments/store', [RecruitmentController::class, 'store']);
-  
+    Route::delete('/recruitments/{recruitments}', [RecruitmentController::class, 'delete']);
     
     
 });
