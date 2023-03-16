@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div>
+    <div class="max-w-7xl mx-auto px-4 md:ml-64 sm:ml-0 lg:px-8">
         <form action="/posts" method="POST" enctype="multipart/form-data">
               @csrf
              <div class="mb-6">
