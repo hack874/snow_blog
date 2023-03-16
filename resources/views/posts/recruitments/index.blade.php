@@ -97,7 +97,7 @@
               'use strict'
         
             if(confirm("本当に削除しますか")){
-             document.getElementById(`form_${id}`).submit();
+              document.getElementById(`form_${id}`).submit();
             }
         }
         </script>

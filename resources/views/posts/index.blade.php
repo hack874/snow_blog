@@ -4,8 +4,8 @@
        <div class='posts max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             @foreach ($posts as $post)
               <div class="border-b-4 border-slate-200 mt-5">
-                <div class='post flex'>
-                  <div class="ml-5 ">
+                <div class='post flex align-items justify-content-end'>
+                  <div class="ml-5">
                     <img
                       id="preview"
                       {{--isset画像が設定されているかどうか--}}
@@ -14,10 +14,22 @@
                       class=" inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
                   </div>
                   <div class="profile mt-1 ml-2">
-                   <p class="mt-4"><a href='/profiles/{{$post->user->id}}'>{{$post->user->name}}<a/></p>
+                    <p class="mt-4"><a href='/profiles/{{$post->user->id}}'>{{$post->user->name}}</a></p>
                   </div>
                   
-                </div>
+                  <div class="mt-5 ml-auto">
+                    @if(auth()->user()->id==$post->user->id)
+                      <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{$post->id}})">
+                          <img src="{{ asset('/images/option.png') }}" class="w-5 h-5" alt="trash Image">
+                        </button>
+                      </form>
+                    @endif
+                  </div>
+                  
+              </div>
                   @foreach ($post->images as $image)
                   <div class="image flex justify-center">
                     <img class src="{{$image->path}}" width="50%"> 
@@ -38,20 +50,12 @@
                   </div>
                   <div class="flex flex-col items-center ml-2">
                     <img src="/images/comment.png" class="w-5 h-5">
-                      <p class="text-xs"><a href='posts/{{$post->id}}/comments'>コメント</p>
+                      <p class="text-xs"><a href='posts/{{$post->id}}/comments'>コメント</a></p>
                   </div>
-                  <div class="flex flex-col items-center">
-                  @if(auth()->user()->id==$post->user->id)
-                  <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" onclick="deletePost({{$post->id}})">
-                    <img src="{{ asset('/images/remove.png') }}" class="w-5 h-5" alt="trash Image">
-                    </button>
-                  </form>
-                  @endif
-                  </div>
+                 
+
                 </div>
+                
               </div>
             @endforeach
       </div>
