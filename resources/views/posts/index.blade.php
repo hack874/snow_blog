@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
     </x-slot>
-       <div class='posts max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+       <div class='posts max-w-7xl mx-auto px-4 md:ml-64 sm:ml-0 lg:px-8'>
             @foreach ($posts as $post)
               <div class="border-b-4 border-slate-200 mt-5">
-                <div class='post flex align-items justify-content-end'>
+                <div class='post flex align-items relative'>
                   <div class="ml-5">
                     <img
                       id="preview"
@@ -14,10 +14,10 @@
                       class=" inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
                   </div>
                   <div class="profile mt-1 ml-2">
-                    <p class="mt-4"><a href='/profiles/{{$post->user->id}}'>{{$post->user->name}}</a></p>
+                    <p class="mt-4 font-name"><a href='/profiles/{{$post->user->id}}'>{{$post->user->name}}</a></p>
                   </div>
                   
-                  <div class="mt-5 ml-auto">
+                  <div class="mt-5 absolute right-0">
                     @if(auth()->user()->id==$post->user->id)
                       <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
                         @csrf

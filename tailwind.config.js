@@ -11,7 +11,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Nunito', '"M PLUS Rounded 1c"', ...defaultTheme.fontFamily.sans],
+                name: ['"Zen Maru Gothic"'],
             },
         },
     },
