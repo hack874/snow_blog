@@ -15,9 +15,9 @@ class PostController extends Controller
 {
     public function index(Post $post)//インポートしたPostをインスタンス化して$postとして使用。
     {   
-        //dd($posts);
+        $total_posts = Post::count();
         $posts = Post::with('user', 'likes')->get();
-        return view('posts/index', compact('posts'));
+        return view('posts/index', compact('posts', 'total_posts'));
     }   
     
     public function create()

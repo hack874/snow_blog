@@ -1,15 +1,14 @@
 <x-app-layout>
-      <div>
-        <div class="mr-3">
+      <div class="container pt-8 max-w-7xl mx-auto px-4 md:ml-64 sm:ml-0 lg:px-8">
+        <div class="flex items-center">
             <img
                 id="preview"
                 {{--isset画像が設定されているかどうか--}}
                 src="{{ isset($user->profile_image) ? $user->profile_image : ""}}"{{--条件,?,trueの時の実行内容:falseの時の実行内容　--}}
                 alt=""
-                class=" inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
+                class="inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
+            <p class="ml-2">{{$user->name}}</p>
         </div>
-      </div>
-            <a href="#">{{$user->name}}</a>
         <h3>お気に入りゲレンデ</h3>
         <p class='favorite_place'>
             {{$user->favorite_place}}
@@ -27,6 +26,7 @@
         <p class='introduction'>
             {{$user->introduction}}
         </p>
+        </div>
     </x-app-layout>
     
     

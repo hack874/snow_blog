@@ -1,10 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-    </x-slot>
-       <div class='posts max-w-7xl mx-auto px-4 md:ml-64 sm:ml-0 lg:px-8'>
+       <div class='container pt-8 max-w-7xl mx-auto px-4 md:ml-64 sm:ml-0 lg:px-8'>
             @foreach ($posts as $post)
               <div class="border-b-4 border-slate-200 mt-5">
-                <div class='post flex align-items relative'>
+                <div class='flex align-items relative'>
                   <div class="ml-5">
                     <img
                       id="preview"
@@ -61,6 +59,7 @@
       </div>
           
     <script src="{{ asset('/js/like.js') }}"></script>
+    <script src="{{ asset('js/InfinitiScroll.js')}}"></script>
     <script>
       function deletePost(id){
         'use strict'
