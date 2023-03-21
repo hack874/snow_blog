@@ -49,6 +49,7 @@
                                                     this.closest('form').submit();">
                                     {{ __('ログアウト') }}
                                 </x-nav-link>
+                            </form>
                         </li>
                     </ul>
                 </div>
