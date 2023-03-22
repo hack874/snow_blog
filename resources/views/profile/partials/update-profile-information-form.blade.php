@@ -31,11 +31,12 @@
                 <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
             </div>
+            
         
-        <div class="form-group row">
-            <label for="gender" class="col-md-4 col-form-label text-md-right">性別</label>
+        <div class="">
+            <label for="gender" class="">性別</label>
         
-            <div class="col-md-6" style="padding-top: 8px">
+            <div class="" style="padding-top: 8px">
                 @if($user->gender=='男性')
                     <input checked id="gender-m" type="radio" name="gender" value="男性">
                     <label for="gender-m">男性</label>
@@ -55,19 +56,13 @@
             </div>
         </div>
 
-<div class="form-group row">
-    <label for="age" class="col-md-4 col-form-label text-md-right">年齢</label>
+        <div class="">
+            <label for="age" class="">年齢</label>
 
-    <div class="col-md-6">
-        <input id="age" type="number" min="1" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value={{$user->age}} required>
-
-        @if ($errors->has('age'))
-            <span class="invalid-feedback">
-                <strong>{{ $errors->first('age') }}</strong>
-            </span>
-        @endif
-    </div>
-</div>
+            <div class="">
+                <input id="age" type="number" min="1" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value={{$user->age}} required>
+            </div>
+        </div>
 
 
       
@@ -84,7 +79,7 @@
         @else
         <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
             <div class="flex items-center pl-3">
-                <input id="type" type="checkbox" name = "sport_kinds[]" value="{{$sport_kind->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                <input id="type" type="checkbox" name ="sport_kinds[]" value="{{$sport_kind->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                 <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label>
             </div>
         </li>
@@ -124,10 +119,6 @@
     <textarea id="introduction" name = "introduction" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="自己紹介しましょう">{{old('user.introduction', $user->introduction)}}</textarea>{{--第1はバリデーションかかってもintroを保持するためにある第2引数ではeditなどに必要--}}
   </div>
   
-  
-
-<form>
-    
   
         <div>
             <x-input-label for="email" :value="__('Email')" />

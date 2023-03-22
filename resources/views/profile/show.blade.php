@@ -16,7 +16,10 @@
         <label for="age" class="col-md-4 col-form-label text-md-right">年齢:{{$user->age}}</label>
         <h3>種類</h3>
         @foreach($user->sportKinds as $sport_kind)
-            <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label> {{--多対多の場合foreachで回す--}}
+            @if($sport_kind->name=="スノーボード")
+                <img src="/images/check.png" class="w-5 h-5">
+                <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label> {{--多対多の場合foreachで回す--}}
+            @endif
         @endforeach
         <h3>スノーボードスタイル</h3>
         @foreach($user->snowboardStyles as $snowboard_style)
@@ -27,6 +30,8 @@
             {{$user->introduction}}
         </p>
         </div>
-    </x-app-layout>
+            
+  
+</x-app-layout>
     
     

@@ -20,5 +20,6 @@
                 <button type="submit" style="background-color: #2695E0; color: white; border-radius: 10px; padding: 0.5rem;">{{$errors->first("post.comment")}}投稿する</button>
         </form>
     </div>
+    
 </x-app-layout>
 
