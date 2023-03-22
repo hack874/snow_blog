@@ -15,16 +15,38 @@
         </p>
         <label for="age" class="col-md-4 col-form-label text-md-right">年齢:{{$user->age}}</label>
         <h3>種類</h3>
-        @foreach($user->sportKinds as $sport_kind)
-            @if($sport_kind->name=="スノーボード")
-                <img src="/images/check.png" class="w-5 h-5">
-                <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label> {{--多対多の場合foreachで回す--}}
-            @endif
-        @endforeach
+        <div class="flex items-center">
+            @foreach($user->sportKinds as $sport_kind)
+                @if($sport_kind->name=="スノーボード")
+                    <img src="/images/check.png" class="w-4 h-4">
+                    <label for="type" class="check w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label> {{--多対多の場合foreachで回す--}}
+                @else
+                    <img src="/images/check.png" class="w-4 h-4">
+                    <label for="type" class="check w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$sport_kind->name}}</label>
+                @endif
+            @endforeach
+        </div>
         <h3>スノーボードスタイル</h3>
-        @foreach($user->snowboardStyles as $snowboard_style)
-            <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$snowboard_style->name}}</label>
-        @endforeach
+        <div class="flex items-center">
+            @foreach($user->snowboardStyles as $snowboard_style)
+                @if($snowboard_style->name=="フリースタイル")
+                    <img src="/images/check.png" class="w-4 h-4">
+                    <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$snowboard_style->name}}</label>
+                @elseif($snowboard_style->name=="パーク")
+                    <img src="/images/check.png" class="w-4 h-4">
+                    <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$snowboard_style->name}}</label>
+                @elseif($snowboard_style->name=="ジブ")
+                    <img src="/images/check.png" class="w-4 h-4">
+                    <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$snowboard_style->name}}</label>
+                @elseif($snowboard_style->name=="グラトリ")
+                    <img src="/images/check.png" class="w-4 h-4">
+                    <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$snowboard_style->name}}</label>
+                @elseif($snowboard_style->name=="パウダー")
+                    <img src="/images/check.png" class="w-4 h-4">
+                    <label for="type" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$snowboard_style->name}}</label>
+                @endif
+            @endforeach
+        </div>
         <h3>自己紹介</h3>
         <p class='introduction'>
             {{$user->introduction}}
