@@ -2,9 +2,9 @@
     <div class="mr-3">
         <img
              id="preview"
-             src="{{ isset(Auth::user()->profile_image) ? Auth::user()->profile_image : ""}}"
+             src="{{ isset(Auth::user()->profile_image) ? Auth::user()->profile_image : "images/user.png"}}"
              alt=""
-             class=" inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
+             class="inline-block w-64 h-64 rounded-full object-cover border-none bg-gray-200">
     </div>
     <div class="flex items-center">
         <button

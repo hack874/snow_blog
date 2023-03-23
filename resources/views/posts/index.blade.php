@@ -9,7 +9,7 @@
                       {{--isset画像が設定されているかどうか--}}
                       src="{{ isset($post->user->profile_image) ? $post->user->profile_image : ""}}"{{--条件,?,trueの時の実行内容:falseの時の実行内容　--}}
                       alt=""
-                      class=" inline-block w-16 h-16 rounded-full object-cover border-none bg-gray-200">
+                      class=" inline-block w-20 h-20 rounded-full object-cover border-none bg-gray-200">
                   </div>
                   <div class="profile mt-1 ml-2">
                     <p class="mt-4 font-name"><a href='/profiles/{{$post->user->id}}'>{{$post->user->name}}</a></p>
