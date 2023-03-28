@@ -64,7 +64,7 @@ class ProfileController extends Controller
         $input_sportkinds = $request->sport_kinds;
         $input_snowboardstyles = $request->snowboard_styles;
         
-        $request->user()->fill($request->safe()->only(['name', 'email', 'age', 'gender', 'password', 'favorite_place', 'introduction', 'profile_image']));
+        $request->user()->fill($request->safe()->only(['name', 'email', 'age', 'gender', 'region', 'password', 'favorite_place', 'introduction', 'profile_image']));
          if(isset($input_image))
         {
             $upload_url = Cloudinary::upload($input_image->getRealPath())->getSecurePath(); //getrealpathがnullなものに使われている
@@ -74,7 +74,8 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-     
+        
+        
         $request->user()->save();
         Auth::user()->sportKinds()->sync($input_sportkinds);
         Auth::user()->snowboardStyles()->sync($input_snowboardstyles);

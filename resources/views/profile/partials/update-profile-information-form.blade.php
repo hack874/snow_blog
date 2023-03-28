@@ -34,9 +34,9 @@
             
         
         <div class="">
-            <label for="gender" class="">性別</label>
+            <label for="gender" class="dark:text-white">性別</label>
         
-            <div class="" style="padding-top: 8px">
+            <div class="dark:text-white" style="padding-top: 8px">
                 @if($user->gender=='男性')
                     <input checked id="gender-m" type="radio" name="gender" value="男性">
                     <label for="gender-m">男性</label>
@@ -56,17 +56,21 @@
             </div>
         </div>
 
-        <div class="">
-            <label for="age" class="">年齢</label>
-
-            <div class="">
-                <input id="age" type="number" min="1" class="form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value={{$user->age}} required>
+        <div class="dark:text-white">
+            <label for="age">年齢</label>
+            <div>
+                <input id="age" type="number" min="1" class="dark:text-gray900 dark:bg-gray-700 form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{$user->age}}" required >
             </div>
+        </div>
+        
+        <div class="dark:text-white">
+            <label for="region" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">住んでいる地域</label>
+            <input type="text" id="region" name ="region" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value = "{{old('user.region', $user->region)}}">
         </div>
 
 
       
-<h3 class="mb-4 font-semibold text-gray-900 dark:text-white">種類</h3>
+<h3 class="mb-4 text-gray-900 dark:text-white">種類</h3>
 <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
      @foreach($sport_kinds as $sport_kind)
        @if(in_array($sport_kind->id, $selected_sport_kinds)) {{--右辺が左辺と一致していた場合--}}
@@ -88,7 +92,7 @@
  </ul>
      
     
-<h3 class="mb-4 font-semibold text-gray-900 dark:text-white">スノーボーダースタイル</h3>
+<h3 class="mb-4 text-gray-900 dark:text-white">スノーボーダースタイル</h3>
 <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
      @foreach($snowboard_styles as $snowboard_style)
        @if(in_array($snowboard_style->id, $selected_snowboard_styles))
@@ -112,10 +116,10 @@
  <div class="mb-6">
     <label for="place" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">お気に入りゲレンデ</label>
     <input type="text" id="place" name ="favorite_place" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value = "{{old('user.favorite_place', $user->favorite_place)}}" placeholder="お気に入りのゲレンデを書きましょう">
-  </div>
+ </div>
  
  <div class="mb-6">
-    <label for="inrtoduction" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">自己紹介</label>
+    <label for="inrtoduction" class="block mb-2 text-sm text-gray-900 dark:text-white">自己紹介</label>
     <textarea id="introduction" name = "introduction" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="自己紹介しましょう">{{old('user.introduction', $user->introduction)}}</textarea>{{--第1はバリデーションかかってもintroを保持するためにある第2引数ではeditなどに必要--}}
   </div>
   

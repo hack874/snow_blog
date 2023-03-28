@@ -1,5 +1,5 @@
 <x-app-layout>
-      <div class="container pt-8 max-w-7xl mx-auto px-4 md:ml-64 sm:ml-0 lg:px-8">
+      <div class="container pt-8 max-w-7xl mx-auto w-3/5 text-center px-4 md:ml-64 sm:ml-0 lg:px-8 dark:text-white">
           <h2 class="text-4xl">プロファイル画面</h2>
         <div class="flex items-center">
             <img
@@ -7,16 +7,18 @@
                 {{--isset画像が設定されているかどうか--}}
                 src="{{ isset($user->profile_image) ? $user->profile_image : "/images/check.png"}}"{{--条件,?,trueの時の実行内容:falseの時の実行内容　--}}
                 alt=""
-                class="inline-block w-64 h-64 rounded-full object-cover border-none bg-gray-200">
-            <p class="ml-2">{{$user->name}}</p>
+                class="inline-block w-40 h-40 rounded-full object-cover border-none bg-gray-200">
+            <div class="flex flex-col ml-10 text-4xl">{{$user->name}}
+                <div class="text-base">年齢:{{$user->age}}</div>
+            </div>
         </div>
         <h3 class="text-xl">お気に入りゲレンデ</h3>
-        <p class='favorite_place'>
+        <p class='border-b-2 border-slate-200'>
             {{$user->favorite_place}}
         </p>
-        <label for="age" class="col-md-4 col-form-label text-md-right">年齢:{{$user->age}}</label>
+        
         <h3>種類</h3>
-        <div class="flex items-center">
+        <div class="flex items-center border-b-2 border-slate-200">
             @foreach($user->sportKinds as $sport_kind)
                 @if($sport_kind->name=="スノーボード")
                     <img src="/images/check.png" class="w-4 h-4">
@@ -28,7 +30,7 @@
             @endforeach
         </div>
         <h3>スノーボードスタイル</h3>
-        <div class="flex items-center">
+        <div class="flex items-center border-b-2 border-slate-200">
            @foreach($user->snowboardStyles as $snowboard_style)
             @switch($snowboard_style->name)
                 @case('フリースタイル')
@@ -55,7 +57,7 @@
           @endforeach
         </div>
         <h3>自己紹介</h3>
-        <p class='introduction'>
+        <p class='border-b-4 border-slate-200'>
             {{$user->introduction}}
         </p>
         </div>

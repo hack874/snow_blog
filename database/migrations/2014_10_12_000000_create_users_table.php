@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('favorite_place')->nullable();
             $table->string('introduction')->nullable();
+            $table->string('region')->nullable();
             $table->string('profile_image')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -20,6 +20,7 @@ class ProfileUpdateRequest extends FormRequest
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'age'=>['integer','min:1', 'required'],
             'gender' => ['string'],
+            'region'=> ['string','max:20'],
             'favorite_place' => ['string'],
             'introduction' => ['string'],
             'profile_image' => ['string', 'mimes:gif,png,jpg,web', 'max:3072'],
