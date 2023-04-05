@@ -15,7 +15,22 @@
                     <p class="mt-4 font-name"><a href='/profiles/{{$post->user->id}}'>{{$post->user->name}}</a></p>
                   </div>
                   
-                  <div class="mt-5 absolute right-0">
+                  <div class="mt-5 dark:text-white absolute right-0">
+                    @if(auth()->user()->id !== $post->user->id)
+                      @if(auth()->user()->isFollowing($post->user))
+                        <form method='post' action="{{ route('unfollow', $post->user) }}">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit">フォローを解除する</button>
+                        </form>
+                      @else
+                        <form action="{{ route('follow', $post->user) }}" method="POST">
+                          @csrf
+                          <button type="submit">フォローする</button>
+                          </form>
+                      @endif
+                    @endif
+                        
                     @if(auth()->user()->id==$post->user->id)
                       <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
                         @csrf

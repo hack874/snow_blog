@@ -7,6 +7,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\RecruitmentController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/recruitments/{recruitment}', [RecruitmentController::class, 'update']);
     Route::post('/recruitments/store', [RecruitmentController::class, 'store']);
     Route::delete('/recruitments/{recruitment}', [RecruitmentController::class, 'delete']);
+    Route::post('/users/{user}/follow', [FollowController::class, 'store'])->name('follow');
+    Route::delete('/users/{user}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
+    
     
     
 });
