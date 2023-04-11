@@ -22,9 +22,7 @@
           　<x-input-error class="mt-2" :messages="$errors->get('picture')" />
       　</div>
         
-        <!--<div class="mb-6">-->
-            <!--<label class="block mb-2 text-sm font-medium text-gray-900 text-orange-600" for="file_input">プロフィール画像</label>-->
-            <!--<input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 " id="file_input" name="image"  type="file">-->
+        
 
             <div>
                 <x-input-label for="name" :value="__('ユーザー名')" />

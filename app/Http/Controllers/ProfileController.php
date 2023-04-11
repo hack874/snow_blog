@@ -20,9 +20,13 @@ class ProfileController extends Controller
      * Display the user's profile form.D
      */
      
+ 
+    
     public function show(User $user) //インスタンス名とルートパラメータを一致させる必要がある
-    {
-        return view ('profile/show')->with(['user' => $user]);
+    {   
+        $followings = $user->followings()->get();
+        $followers = $user->followers()->get();
+        return view ('profile/show')->with(['user' => $user, 'followings'=>$followings, 'followers'=>$followers]);
         
     }
      

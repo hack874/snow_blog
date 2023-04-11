@@ -17,7 +17,7 @@ use App\Http\Controllers\FollowController;
 | Here is where you can register web routes f-
 */
 Route::middleware('auth')->group(function () {
-    Route::get('/profiles/{user}', [ProfileController::class, 'show']);
+    Route::get('/profiles/{user}', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/', [PostController::class, 'index'])->name('index');
     Route::post('/posts/{comment_id}/comments/', [CommentsController::class, 'store']);
     Route::get('/posts/{post}/comments/', [CommentsController::class, 'index']);
