@@ -12,6 +12,8 @@
                 <div class="text-base">年齢:{{$user->age}}</div>
             </div>
         </div>
+        <p>フォロー数{{$followings->count()}}</p>
+        <p>フォロワー数{{$followers->count()}}</p>
         <h3 class="text-xl">お気に入りゲレンデ</h3>
         <p class='border-b-2 border-slate-200'>
             {{$user->favorite_place}}

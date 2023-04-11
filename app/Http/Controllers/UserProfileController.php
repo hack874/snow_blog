@@ -19,7 +19,7 @@ class UserProfileController extends Controller
             $user->id = $user->id;
             $uer->save();
         }
-        return redirect('posts/profile/index' . $user->id);
+        return redirect('profile/index' . $user->id);
     }
     
     public function profile(user $user) {

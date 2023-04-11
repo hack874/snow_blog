@@ -24,9 +24,15 @@
                     <ul class="space-y-2">
                         <li>
                             <x-nav-link :href="route('profile.update')" :active="request()->routeIs('profile.update')">
-                                {{__("ログイン中のユーザー:").Auth::user()->name }}
+                                {{__("プロフィール編集画面")}}
                             </x-nav-link>
                         </li>
+                        <li>
+                            <x-nav-link :href="route('profile.show', auth()->user()->id)" :active="request()->routeIs('profile.show')">
+                                {{ __('ログイン中のユーザー:') .Auth::user()->name}}
+                            </x-nav-link>
+                        </li>
+                        
                         <li>
                             <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                                 {{ __('ホーム画面') }}
