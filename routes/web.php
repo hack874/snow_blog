@@ -41,7 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/recruitments/{recruitment}', [RecruitmentController::class, 'delete']);
     Route::post('/users/{user}/follow', [FollowController::class, 'store'])->name('follow');
     Route::delete('/users/{user}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
-    
+    Route::get('/chat', [App\Http\Controllers\ChatController::class, 'index']);
+    Route::post('/chat', [App\Http\Controllers\ChatController::class, 'sendMessage']);
     
     
 });
