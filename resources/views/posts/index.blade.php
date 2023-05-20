@@ -52,9 +52,9 @@
                 <div class="flex">
                   <div class="flex flex-col items-center">
                   @if(auth()->user()->isLike($post->id)){{--関数を実行しているので実際に値を入れる$post->idの形になる--}}
-                      <img id="image_{{$post->id}}" class="w-5 h-5" src="{{asset('/images/heart.png')}}" onclick="like({{$post->id}})">
-                  @else
                       <img id="image_{{$post->id}}" class="w-5 h-5" src="{{asset('/images/love.png')}}" onclick="like({{$post->id}})">
+                  @else
+                      <img id="image_{{$post->id}}" class="w-5 h-5" src="{{asset('/images/heart01.svg')}}" onclick="like({{$post->id}})">
                    {{--画像が押されたときにjsのlike関数の引数に投稿のデータがわたって実行される--}}
                   @endif
                       <p class="text-xs">いいね</p>
@@ -62,7 +62,7 @@
                       
                   </div>
                   <div class="flex flex-col items-center ml-2">
-                    <img src="/images/comment.png" class="w-5 h-5">
+                    <img src="/images/comment01.svg" class="w-5 h-5">
                       <p class="text-xs"><a href='posts/{{$post->id}}/comments'>コメント</a></p>
                   </div>
                  

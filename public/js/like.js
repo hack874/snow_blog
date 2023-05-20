@@ -11,7 +11,7 @@ function like(postId) {
       const img=document.getElementById(`image_${postId}`);　//特定のimageの「id」を取ってきてimgに代入.画像複数ある場合に特定するため
       if(data == 'unliked') //'unliked'は文字
       {
-          img.src='../images/love.png';
+          img.src='../images/heart01.svg';
           //いいねカウントを減らす
           const count = document.getElementById(`count_${postId}`); //特定のカウントの「id」を取ってきてcountに代入
           count.textContent = Number(count.textContent) - 1; //カウントのテキストを数値に変換して1減らす

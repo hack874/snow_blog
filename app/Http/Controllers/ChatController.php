@@ -9,6 +9,12 @@ use App\Events\MessageSent; // for MessageSent::dispatch()
 
 class ChatController extends Controller
 {
+    public function __construct()
+    {
+        // 認証されたユーザーだけが、このコントローラのページにアクセスすることができる。
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('chat');
@@ -17,13 +23,16 @@ class ChatController extends Controller
     // メッセージ送信時の処理
     public function sendMessage( Request $request )
     {
+        // auth()->user() : 現在認証しているユーザーを取得
+        $user = auth()->user();
+        $strUsername = $user->name;
+        
         // リクエストからデータの取り出し
-        $strNickname = $request->input('nickname');
         $strMessage = $request->input('message');
         
-        // メッセージオブジェクトの作成
+        // メッセージオブジェクトの作成と公開メンバー設定
         $message = new Message;
-        $message->nickname = $strNickname;
+        $message->username = $strUsername;
         $message->body = $strMessage;
        
         // 送信者を含めてメッセージを送信
@@ -39,4 +48,3 @@ class ChatController extends Controller
         return $request;
     }
 }
-
