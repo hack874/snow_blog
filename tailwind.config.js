@@ -13,6 +13,7 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', '"M PLUS Rounded 1c"', ...defaultTheme.fontFamily.sans],
                 name: ['"Zen Maru Gothic"'],
+                rbt: ['Roboto', '"M PLUS Rounded 1c"', ...defaultTheme.fontFamily.sans],
             },
         },
     },

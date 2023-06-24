@@ -1,5 +1,5 @@
  <header>
-    <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+    <nav x-data="{ open: false }" class="bg-white dark:bg-zinc-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -20,7 +20,7 @@
                 </button>
             
             <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0" aria-label="Sidebar">
-                <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-zinc-800">
                     <ul class="space-y-2">
                         <li class="flex items-center">
                             <img src="/images/edit.png" class="w-5 h-5">
