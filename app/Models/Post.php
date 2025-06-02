@@ -15,6 +15,8 @@ class Post extends Model
         'user_id',
         'image_id',
         'like',
+        'created_at',
+        'updated_at'
         ];
     
     

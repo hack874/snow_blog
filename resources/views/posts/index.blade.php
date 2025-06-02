@@ -31,6 +31,7 @@
                       @endif
                     @endif
                         
+                    <p>投稿日: {{ $post->created_at->format('Y年m月d日 H:i') }}</p>
                     @if(auth()->user()->id==$post->user->id)
                       <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
                         @csrf
@@ -74,7 +75,7 @@
       </div>
           
     <script src="{{ asset('/js/like.js') }}"></script>
-    <script src="{{ asset('js/InfinitiScroll.js')}}"></script>
+    {{--<script src="{{ asset('js/InfinitiScroll.js')}}"></script>--}}
     <script>
       function deletePost(id){
         'use strict'
