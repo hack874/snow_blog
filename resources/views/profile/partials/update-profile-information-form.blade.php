@@ -30,41 +30,26 @@
                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
             </div>
             
-        
-        <div class="">
-            <label for="gender" class="dark:text-white">性別</label>
-        
-            <div class="dark:text-white" style="padding-top: 8px">
-                @if($user->gender=='男性')
-                    <input checked id="gender-m" type="radio" name="gender" value="男性">
-                    <label for="gender-m">男性</label>
-                    <input id="gender-f" type="radio" name="gender" value="女性">
-                    <label for="gender-f">女性</label>
-                @else 
-                    <input id="gender-m" type="radio" name="gender" value="男性"> {{--「checked」ない場合、女性を選択したときにcheckが外れる--}}
-                    <label for="gender-m">男性</label>
-                    <input id="gender-f" type="radio" name="gender" value="女性">
-                    <label for="gender-f">女性</label>
-                @endif    
-                @if ($errors->has('gender'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('gender') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
+            
+        <div class="dark:text-white">
+    <label for="age">年齢</label>
+    <div>
+        <input id="age" type="number" min="1" class="dark:text-gray900 dark:bg-gray-700 form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{ old('age', $user->age) }}" required>
+    </div>
+</div>
 
-        <div class="dark:text-white">
-            <label for="age">年齢</label>
-            <div>
-                <input id="age" type="number" min="1" class="dark:text-gray900 dark:bg-gray-700 form-control{{ $errors->has('age') ? ' is-invalid' : '' }}" name="age" value="{{$user->age}}" required >
-            </div>
-        </div>
-        
-        <div class="dark:text-white">
-            <label for="region" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">住んでいる地域</label>
-            <input type="text" id="region" name ="region" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value = "{{old('user.region', $user->region)}}">
-        </div>
+<div class="dark:text-white mt-4">
+    <label for="gender">性別</label>
+    <div>
+        <select id="gender" name="gender" class="dark:text-gray900 dark:bg-gray-700 form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" required>
+            <option value="">選択してください</option>
+            <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>男性</option>
+            <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>女性</option>
+            <option value="other" {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>その他</option>
+        </select>
+    </div>
+</div>
+
 
 
       
