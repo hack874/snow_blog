@@ -8,7 +8,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\RecruitmentController;
 use App\Http\Controllers\FollowController;
-
+use App\Http\Controllers\Auth\GoogleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,7 @@ use App\Http\Controllers\FollowController;
 |
 | Here is where you can register web routes f-
 */
+//認証が必要なページ
 Route::middleware('auth')->group(function () {
     Route::get('/profiles/{user}', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/', [PostController::class, 'index'])->name('index');
@@ -46,6 +47,8 @@ Route::middleware('auth')->group(function () {
     
 });
 
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 
 
