@@ -39,5 +39,9 @@ class GoogleController extends Controller
             ]);
             
         }
+        
+        return redirect('/dashboard');
+
+        
     }
 }
